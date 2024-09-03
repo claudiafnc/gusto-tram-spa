@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>This is the menu</h1>
+    <h1>This is the menu page</h1>
   </div>
 </template>

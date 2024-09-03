@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-9 col-sm-12">
+      <div class="col">
         <router-view />
         <!-- Qui verrà visualizzato il contenuto delle pagine -->
       </div>
