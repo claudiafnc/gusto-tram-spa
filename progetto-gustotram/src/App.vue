@@ -2,34 +2,30 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <HeaderBar></HeaderBar>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
         <NavBar></NavBar>
       </div>
     </div>
     <div class="row">
       <div class="col-md-9 col-sm-12">
         <router-view />
+        <!-- Qui verrà visualizzato il contenuto delle pagine -->
       </div>
     </div>
     <div class="row">
-      <div class="col"><FooterBar></FooterBar></div>
+      <div class="col">
+        <FooterBar></FooterBar>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import HeaderBar from "@/components/HeaderBar.vue";
 import FooterBar from "@/components/FooterBar.vue";
 
 export default {
   components: {
     NavBar,
-    HeaderBar,
     FooterBar,
   },
 };
