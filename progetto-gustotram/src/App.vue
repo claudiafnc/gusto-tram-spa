@@ -11,10 +11,8 @@
         <!-- Qui verrà visualizzato il contenuto delle pagine -->
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <FooterBar></FooterBar>
-      </div>
+    <div class="container">
+      <FooterBar></FooterBar>
     </div>
   </div>
 </template>
