@@ -20,7 +20,7 @@
         id="navbarNavDropdown"
       >
         <!-- Menu sinistro -->
-        <ul class="navbar-nav">
+        <ul class="navbar-nav sinistra">
           <li class="nav-item">
             <router-link :to="{ name: 'home' }" class="nav-link"
               >HOME</router-link
@@ -33,12 +33,17 @@
           </li>
         </ul>
 
-        <!-- Logo al centro -->
-        <a class="navbar-brand mx-auto" href="#">slurp</a>
-        <!-- aggiungere immagine -->
+        <!-- Logo centrale, che rimanda alla home -->
+        <router-link :to="{ name: 'home' }" class="navbar-brand mx-auto"
+          ><img
+            src="@/assets/images/logo-slurp.png"
+            alt="logo"
+            width="100"
+            height="85"
+        /></router-link>
 
         <!-- Menu destro -->
-        <ul class="navbar-nav">
+        <ul class="navbar-nav destra">
           <li class="nav-item">
             <router-link :to="{ name: 'about' }" class="nav-link"
               >ABOUT</router-link
@@ -54,6 +59,45 @@
     </div>
   </nav>
 </template>
+
+<style scoped>
+.navbar {
+  background-color: #800000 !important;
+  font-family: "New Amsterdam", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+}
+.nav-link {
+  color: #F2E8C6;
+}
+
+.nav-link:hover{
+  text-decoration: underline;
+}
+
+.sinistra li:last-child {
+  margin-left: 6em;
+}
+
+.destra li:first-child {
+  margin-right: 6em;
+}
+
+@media only screen and (max-width: 992px) {
+  .sinistra li:last-child {
+    margin-left: 0;
+  }
+
+  .destra li:first-child {
+    margin-right: 0;
+  }
+
+  img{
+    display:none;
+  }
+}
+</style>
 
 <script>
 export default {};

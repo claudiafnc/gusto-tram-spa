@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col">
         <NavBar></NavBar>
@@ -11,8 +11,12 @@
         <!-- Qui verrà visualizzato il contenuto delle pagine -->
       </div>
     </div>
-    <div class="container">
-      <FooterBar></FooterBar>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <FooterBar></FooterBar>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -29,25 +33,4 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<style></style>
