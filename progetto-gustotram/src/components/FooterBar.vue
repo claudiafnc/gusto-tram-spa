@@ -8,7 +8,7 @@
       </li>
       <li class="nav-item">
         <router-link :to="{ name: 'menu' }" class="nav-link px-2 text-muted"
-          >MENU</router-link
+          >MEN&Ugrave</router-link
         >
       </li>
       <li class="nav-item">
@@ -37,7 +37,7 @@ footer {
   font-size: 16px;
 }
 .nav-link {
-  color: #F2E8C6;
+  color: #f2e8c6;
 }
 .nav-item {
   margin-right: 30px;

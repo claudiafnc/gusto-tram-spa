@@ -4,6 +4,8 @@ import AboutView from "../views/AboutView.vue";
 import MenuView from "../views/MenuView.vue";
 import PrenotaView from "../views/PrenotaView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
+import MenuClassicoView from "../views/MenuClassicoView.vue";
+import MenuVegView from "../views/MenuVegView.vue";
 
 const routes = [
   {
@@ -20,6 +22,18 @@ const routes = [
     path: "/menu",
     name: "menu",
     component: MenuView,
+    children: [
+      {
+        path: "menu-classico",
+        name: "menuClassico",
+        component: MenuClassicoView,
+      },
+      {
+        path: "menu-veg",
+        name: "menuVeg",
+        component: MenuVegView,
+      },
+    ],
   },
   {
     path: "/prenota",

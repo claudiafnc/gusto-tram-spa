@@ -14,13 +14,14 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Contenuto del menu collassabile -->
       <div
-        class="collapse navbar-collapse justify-content-between"
+        class="collapse navbar-collapse justify-content-center"
         id="navbarNavDropdown"
       >
-        <!-- Menu sinistro -->
-        <ul class="navbar-nav sinistra">
+        <ul
+          class="navbar-nav d-flex w-100 justify-content-between align-items-center"
+        >
+          <!-- Menu sinistro -->
           <li class="nav-item">
             <router-link :to="{ name: 'home' }" class="nav-link"
               >HOME</router-link
@@ -28,29 +29,32 @@
           </li>
           <li class="nav-item">
             <router-link :to="{ name: 'menu' }" class="nav-link"
-              >MENU</router-link
+              >MEN&Ugrave</router-link
             >
           </li>
-        </ul>
 
-        <!-- Logo centrale, che rimanda alla home -->
-        <router-link :to="{ name: 'home' }" class="navbar-brand mx-auto"
-          ><img
-            src="@/assets/images/logo-slurp.png"
-            alt="logo"
-            width="110"
-            height="95"
-        /></router-link>
+          <!-- Logo centrale -->
+          <li class="nav-item mx-auto">
+            <router-link :to="{ name: 'home' }" class="navbar-brand">
+              <img
+                src="@/assets/images/logo-slurp.png"
+                alt="logo"
+                width="110"
+                height="95"
+              />
+            </router-link>
+          </li>
 
-        <!-- Menu destro -->
-        <ul class="navbar-nav destra">
+          <!-- Menu destro -->
           <li class="nav-item">
             <router-link :to="{ name: 'about' }" class="nav-link"
               >ABOUT</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'prenota' }" class="nav-link btn cta-prenota-navbar"
+            <router-link
+              :to="{ name: 'prenota' }"
+              class="nav-link btn cta-prenota-navbar"
               >PRENOTA</router-link
             >
           </li>
@@ -67,30 +71,24 @@
   font-weight: 400;
   font-style: normal;
   font-size: 32px;
-  text-align: center;
 }
+
 .nav-link {
-  color: #F2E8C6;
+  color: #f2e8c6;
 }
 
-.nav-link:hover, .nav-link:focus {
+.nav-link:hover,
+.nav-link:focus {
   text-decoration: underline;
-  color: #F2E8C6;
-}
-
-.sinistra li:last-child {
-  margin-left: 9em;
-}
-
-.destra li:first-child {
-  margin-right: 9em;
+  color: #f2e8c6;
 }
 
 .navbar-toggler-icon {
-  filter: invert(100%); /* Cambia il colore delle linee a bianco */
+  filter: invert(100%);
 }
+
 .navbar-toggler {
-  border-color: #F2E8C6;    /* Colore del bordo personalizzato */
+  border-color: #f2e8c6;
 }
 
 .navbar-toggler:focus {
@@ -98,28 +96,34 @@
   box-shadow: none;
 }
 
-@media only screen and (max-width: 992px) {
-  .sinistra li:last-child {
-    margin-left: 0;
-  }
-
-  .destra li:first-child {
-    margin-right: 0;
-  }
-
-  img{
-    display:none;
-  }
-}
-.cta-prenota-navbar{
-  background-color: #F2E8C6 !important;
+.cta-prenota-navbar {
+  background-color: #f2e8c6 !important;
   color: #800000 !important;
   font-family: "New Amsterdam", sans-serif !important;
   font-weight: 400;
   font-style: normal;
   font-size: 32px !important;
-  padding-left: 1em !important;
-  padding-right: 1em !important;
+  width: 200px !important;
+  margin: 0 auto;
+}
+
+.navbar-nav {
+  width: 100%;
+}
+
+.navbar-nav li {
+  flex: 1; /* Ogni elemento del menu occupa lo stesso spazio */
+  text-align: center;
+}
+
+.navbar-brand {
+  display: block;
+}
+
+@media only screen and (max-width: 992px) {
+  img {
+    display: none;
+  }
 }
 </style>
 
