@@ -38,8 +38,8 @@
           ><img
             src="@/assets/images/logo-slurp.png"
             alt="logo"
-            width="100"
-            height="85"
+            width="110"
+            height="95"
         /></router-link>
 
         <!-- Menu destro -->
@@ -50,7 +50,7 @@
             >
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'prenota' }" class="nav-link"
+            <router-link :to="{ name: 'prenota' }" class="nav-link btn cta-prenota-navbar"
               >PRENOTA</router-link
             >
           </li>
@@ -67,21 +67,35 @@
   font-weight: 400;
   font-style: normal;
   font-size: 32px;
+  text-align: center;
 }
 .nav-link {
   color: #F2E8C6;
 }
 
-.nav-link:hover{
+.nav-link:hover, .nav-link:focus {
   text-decoration: underline;
+  color: #F2E8C6;
 }
 
 .sinistra li:last-child {
-  margin-left: 6em;
+  margin-left: 9em;
 }
 
 .destra li:first-child {
-  margin-right: 6em;
+  margin-right: 9em;
+}
+
+.navbar-toggler-icon {
+  filter: invert(100%); /* Cambia il colore delle linee a bianco */
+}
+.navbar-toggler {
+  border-color: #F2E8C6;    /* Colore del bordo personalizzato */
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 @media only screen and (max-width: 992px) {
@@ -96,6 +110,16 @@
   img{
     display:none;
   }
+}
+.cta-prenota-navbar{
+  background-color: #F2E8C6 !important;
+  color: #800000 !important;
+  font-family: "New Amsterdam", sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
 }
 </style>
 
