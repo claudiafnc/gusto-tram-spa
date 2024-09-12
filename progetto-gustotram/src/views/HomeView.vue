@@ -178,6 +178,11 @@ h1 {
   margin-top: 2em;
   padding-left: 1.5em !important;
   padding-right:1.5em !important;
+  transition: background-color 0.3s ease, color 0.3s ease !important; 
+}
+
+.cta-prenota:hover {
+  background-color: rgba(82, 13, 11, 0.9) !important; /* Colore di sfondo più scuro con trasparenza alta */
 }
 
 h2 {
