@@ -24,4 +24,9 @@ h1 {
   width: 50%;
   text-align: center;
 }
+@media only screen and (max-width: 768px){ 
+  .sezione-testo{
+    width: 80%;
+  }
+}
 </style>

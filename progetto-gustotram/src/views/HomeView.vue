@@ -96,7 +96,7 @@
             alt="menu classico"
           />
           <div class="card-body">
-            <h5 class="card-title titolo-card">Men&Ugrave classico</h5>
+            <h5 class="card-title titolo-card">Men&Ugrave; classico</h5>
             <p class="card-text">
               Scopri il nostro Menù Classico, un viaggio attraverso i piatti
               tradizionali piemontesi preparati con ingredienti locali. Assapora
@@ -104,7 +104,7 @@
               morso.
             </p>
             <router-link :to="{ name: 'menuClassico' }" class="btn cta-prenota"
-              >SCOPRI IL MEN&Ugrave CLASSICO</router-link
+              >SCOPRI IL MEN&Ugrave; CLASSICO</router-link
             >
             <!--mettere il link-->
           </div>
@@ -118,14 +118,14 @@
             alt="menu veg"
           />
           <div class="card-body">
-            <h5 class="card-title titolo-card">Men&Ugrave vegetariano</h5>
+            <h5 class="card-title titolo-card">Men&Ugrave; vegetariano</h5>
             <p class="card-text">
               Scopri il nostro Menù Vegano, una selezione creativa e vibrante di
               piatti senza ingredienti animali, che esaltano i sapori naturali
               del Piemonte. Un'opzione gustosa e sostenibile per tutti i palati.
             </p>
             <router-link :to="{ name: 'menuVeg' }" class="btn cta-prenota"
-              >SCOPRI IL MEN&Ugrave VEGETARIANO</router-link
+              >SCOPRI IL MEN&Ugrave; VEGETARIANO</router-link
             >
             <!--mettere il link-->
           </div>

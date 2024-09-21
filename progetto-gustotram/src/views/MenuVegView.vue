@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center g-5">
       <div class="col-4">
-        <div class="list-group" id="list-tab" role="tablist">
+        <div class="list-group text-end" id="list-tab" role="tablist">
           <a
             class="list-group-item list-group-item-action active"
             id="list-home-list"

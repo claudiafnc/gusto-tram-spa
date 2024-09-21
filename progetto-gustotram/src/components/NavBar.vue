@@ -29,7 +29,7 @@
           </li>
           <li class="nav-item">
             <router-link :to="{ name: 'menu' }" class="nav-link"
-              >MEN&Ugrave</router-link
+              >MEN&Ugrave;</router-link
             >
           </li>
 

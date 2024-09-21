@@ -28,7 +28,7 @@
         </li>
       </ul>
     </div>
-    <div>
+    <div class="view-menu">
       <router-view></router-view>
     </div>
   </div>
@@ -82,7 +82,7 @@ ul {
 .nav-link:focus {
   color: #800000;
 }
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992px) { /* larghezza inferiore o uguale a 992 */
   ul {
     display: block;
     text-align: center;
@@ -90,6 +90,12 @@ ul {
 
   .separatore {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 768px){ 
+  .sezione-testo{
+    width: 80%;
   }
 }
 </style>

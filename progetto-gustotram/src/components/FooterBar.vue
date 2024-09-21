@@ -8,7 +8,7 @@
       </li>
       <li class="nav-item">
         <router-link :to="{ name: 'menu' }" class="nav-link px-2 text-muted"
-          >MEN&Ugrave</router-link
+          >MEN&Ugrave;</router-link
         >
       </li>
       <li class="nav-item">

@@ -20,25 +20,27 @@
             </div>
           </div>
 
-          <!-- Menu Veg e Menu Classico -->
-          <div class="mb-3 d-flex">
-            <div class="me-3">
-              <label for="menuVeg" class="form-label">Menu Veg</label>
-              <div class="d-flex align-items-center">
-                <input type="number" v-model.number="menuVeg" class="form-control me-2" id="menuVeg" min="0" required style="width: 100px;">
-                <button type="button" @click="decrementaMenuVeg" class="btn btn-outline-secondary">-</button>
-                <button type="button" @click="incrementaMenuVeg" class="btn btn-outline-secondary ms-2">+</button>
-              </div>
-            </div>
-            <div>
-              <label for="menuClassico" class="form-label">Menu Classico</label>
-              <div class="d-flex align-items-center">
-                <input type="number" v-model.number="menuClassico" class="form-control me-2" id="menuClassico" min="0" required style="width: 100px;">
-                <button type="button" @click="decrementaMenuClassico" class="btn btn-outline-secondary">-</button>
-                <button type="button" @click="incrementaMenuClassico" class="btn btn-outline-secondary ms-2">+</button>
-              </div>
+
+          <!-- Menu Veg -->
+          <div class="mb-3">
+            <label for="menuVeg" class="form-label">Menu Veg</label>
+            <div class="d-flex align-items-center">
+              <input type="number" v-model.number="menuVeg" class="form-control me-2" id="menuVeg" min="0" required style="width: 100px;">
+              <button type="button" @click="decrementaMenuVeg" class="btn btn-outline-secondary">-</button>
+              <button type="button" @click="incrementaMenuVeg" class="btn btn-outline-secondary ms-2">+</button>
             </div>
           </div>
+
+          <!-- Menu Classico -->
+          <div class="mb-3">
+            <label for="menuClassico" class="form-label">Menu Classico</label>
+            <div class="d-flex align-items-center">
+              <input type="number" v-model.number="menuClassico" class="form-control me-2" id="menuClassico" min="0" required style="width: 100px;">
+              <button type="button" @click="decrementaMenuClassico" class="btn btn-outline-secondary">-</button>
+              <button type="button" @click="incrementaMenuClassico" class="btn btn-outline-secondary ms-2">+</button>
+            </div>
+          </div>
+
 
           <!-- Data e Slot Orario -->
           <div class="mb-3 d-flex">
@@ -78,7 +80,7 @@
         <div class="mt-4" id="prenotazioni-section">
           <h2>Le tue prenotazioni</h2>
           <div v-if="prenotazioni.length === 0">
-            <p class="no-prenotazione">Nessuna prenotazione</p>
+            <p class="no-prenotazione">-- Nessuna prenotazione --</p>
           </div>
           <div v-else>
             <div v-for="(prenotazione, index) in prenotazioni" :key="index" class="card mb-3">
@@ -319,9 +321,15 @@ h1 {
 .pulsanti-conferma {
   display: inline;
 }
+@media only screen and (max-width: 768px){ 
+
+}
 @media only screen and (max-width: 528px) {
   .prenotazione-cta-light {
     margin-left: 0 !important;
   }
 }
+
+
+
 </style>
