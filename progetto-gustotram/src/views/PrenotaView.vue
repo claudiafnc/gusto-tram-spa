@@ -9,7 +9,7 @@
             <label for="nome" class="form-label">Nome e Cognome</label>
             <input type="text" v-model="nome" class="form-control" id="nome" required>
           </div>
-          
+
           <!-- Numero di Ospiti -->
           <div class="mb-3">
             <label for="ospiti" class="form-label">Numero di Ospiti</label>
@@ -19,7 +19,7 @@
               <button type="button" @click="incrementaOspiti" class="btn btn-outline-secondary ms-2">+</button>
             </div>
           </div>
-          
+
           <!-- Menu Veg e Menu Classico -->
           <div class="mb-3 d-flex">
             <div class="me-3">
@@ -39,7 +39,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Data e Slot Orario -->
           <div class="mb-3 d-flex">
             <div class="me-3">
@@ -48,28 +48,26 @@
             </div>
             <div>
               <label for="slotOrario" class="form-label">Slot Orario</label>
-              <div class="d-flex align-items-center">
-                <select v-model="slotOrario" class="form-control" id="slotOrario" required style="width: 100px;">
-                  <option value="13:00">13:00</option>
-                  <option value="19:00">19:00</option>
-                  <option value="21:00">21:00</option>
-                </select>
-              </div>
+              <select v-model="slotOrario" class="form-control" id="slotOrario" required style="width: 100px;">
+                <option value="13:00">13:00</option>
+                <option value="19:00">19:00</option>
+                <option value="21:00">21:00</option>
+              </select>
             </div>
           </div>
-          
+
           <!-- Numero di Telefono -->
           <div class="mb-3">
             <label for="telefono" class="form-label">Numero di Telefono</label>
             <input type="tel" v-model="telefono" class="form-control" id="telefono" required style="width: 200px;" pattern="[0-9]*">
           </div>
-          
+
           <!-- Note Aggiuntive -->
           <div class="mb-3">
             <label for="note" class="form-label">Note Aggiuntive</label>
             <textarea v-model="note" class="form-control" id="note" rows="3"></textarea>
           </div>
-          
+
           <!-- Pulsanti Azione -->
           <div class="mb-3">
             <button type="submit" class="btn prenotazione-cta">Crea Prenotazione</button>
@@ -79,14 +77,12 @@
 
         <div class="mt-4" id="prenotazioni-section">
           <h2>Le tue prenotazioni</h2>
-          <!-- Verifica se ci sono prenotazioni -->
           <div v-if="prenotazioni.length === 0">
             <p class="no-prenotazione">Nessuna prenotazione</p>
           </div>
           <div v-else>
             <div v-for="(prenotazione, index) in prenotazioni" :key="index" class="card mb-3">
               <div class="card-body">
-                <!-- Icona di eliminazione -->
                 <button v-if="prenotazione.confermata" @click="eliminaPrenotazione(index)" class="btn btn-link btn-delete">
                   <i class="fas fa-trash-alt"></i>
                 </button>
@@ -116,7 +112,8 @@
   </div>
 </template>
 
-<script>
+<script> 
+import axios from "axios"; // Importa axios
 import { mapState, mapActions } from 'vuex';
 
 export default {
@@ -129,11 +126,25 @@ export default {
       data: '',
       slotOrario: '13:00',
       telefono: '',
-      note: ''
+      note: '',
+      prenotazioni: []
     };
   },
   computed: {
     ...mapState(['prenotazioni'])
+  },
+  created() {
+    // Effettua la richiesta GET al json-server locale
+    axios.get("http://localhost:3000/prenotazioni")
+      .then(response => {
+        this.prenotazioni = response.data; 
+        response.data.forEach(prenotazione => {
+          this.addPrenotazioneToStore(prenotazione);
+        });
+      })
+      .catch(error => {
+        console.error("Errore nel caricamento delle prenotazioni:", error);
+      });
   },
   methods: {
     ...mapActions(['addPrenotazione', 'confirmPrenotazione', 'deletePrenotazione']),
@@ -150,31 +161,58 @@ export default {
         confermata: false
       };
       this.addPrenotazione(nuovaPrenotazione);
-      // Resetta i campi del form
-      this.nome = '';
-      this.ospiti = 1;
-      this.menuVeg = 0;
-      this.menuClassico = 0;
-      this.data = '';
-      this.slotOrario = '13:00';
-      this.telefono = '';
-      this.note = '';
-      // Scrolla verso la sezione delle prenotazioni
-      this.$nextTick(() => {
-        const section = document.getElementById('prenotazioni-section');
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
+      
+      // Invia la nuova prenotazione al server
+      axios.post("http://localhost:3000/prenotazioni", nuovaPrenotazione)
+        .then(response => {
+          // Resetta i campi del form
+          this.nome = '';
+          this.ospiti = 1;
+          this.menuVeg = 0;
+          this.menuClassico = 0;
+          this.data = '';
+          this.slotOrario = '13:00';
+          this.telefono = '';
+          this.note = '';
+
+          this.prenotazioni.push(response.data); // Aggiungi la nuova prenotazione alla lista locale
+
+          // Scrolla verso la sezione delle prenotazioni
+          this.$nextTick(() => {
+            const section = document.getElementById('prenotazioni-section');
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        })
+        .catch(error => {
+          console.error("Errore nella creazione della prenotazione:", error);
+        });
     },
     confermaPrenotazione(index) {
       this.confirmPrenotazione(index);
+      const prenotazione = this.prenotazioni[index];
+
+      // Aggiorna il server con la conferma
+      axios.patch(`http://localhost:3000/prenotazioni/${prenotazione.id}`, { confermata: true })
+        .catch(error => {
+          console.error("Errore nella conferma della prenotazione:", error);
+        });
     },
     eliminaPrenotazione(index) {
       this.deletePrenotazione(index);
+      const prenotazione = this.prenotazioni[index];
+
+      // Elimina dal server
+      axios.delete(`http://localhost:3000/prenotazioni/${prenotazione.id}`)
+        .then(() => {
+          this.prenotazioni.splice(index, 1);
+        })
+        .catch(error => {
+          console.error("Errore nell'eliminazione della prenotazione:", error);
+        });
     },
     annullaPrenotazione() {
-      // Resetta i campi del form
       this.nome = '';
       this.ospiti = 1;
       this.menuVeg = 0;
@@ -201,6 +239,9 @@ export default {
     },
     decrementaMenuClassico() {
       if (this.menuClassico > 0) this.menuClassico--;
+    },
+    addPrenotazioneToStore(prenotazione) {
+      this.$store.dispatch('addPrenotazione', prenotazione);
     }
   }
 };
@@ -213,7 +254,6 @@ export default {
 h1 {
   text-align: center;
 }
-
 .mb-3, .no-prenotazione, .card-text {
   font-family: "Montserrat", sans-serif;
   font-weight: 450;
@@ -221,10 +261,9 @@ h1 {
   font-size: 18px;
   color: #1a1a1a !important;
 }
-
 .prenotazione-cta {
-  background-color: #982b1c !important; /* Colore di sfondo originale */
-  color: #f2e8c6 !important; /* Colore del testo */
+  background-color: #982b1c !important; 
+  color: #f2e8c6 !important; 
   font-family: "New Amsterdam", sans-serif !important;
   font-weight: 500;
   font-style: normal;
@@ -232,18 +271,16 @@ h1 {
   margin-top: 1em;
   padding-left: 1.5em !important;
   padding-right: 1.5em !important;
-  border: none; /* Rimuove il bordo predefinito del pulsante */
-  border-radius: 5px; /* Aggiunge bordi arrotondati */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Aggiunge una transizione morbida per entrambi i colori */
+  border: none; 
+  border-radius: 5px; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
-
 .prenotazione-cta:hover {
-  background-color: rgba(82, 13, 11, 0.9) !important; /* Colore di sfondo più scuro con trasparenza alta */
+  background-color: rgba(82, 13, 11, 0.9) !important; 
 }
-
 .prenotazione-cta-light {
-  background-color: #f2e8c6 !important; /* Colore di sfondo originale chiaro */
-  color: #982b1c !important; /* Colore del testo originale scuro */
+  background-color: #f2e8c6 !important; 
+  color: #982b1c !important; 
   font-family: "New Amsterdam", sans-serif !important;
   font-weight: 500;
   font-style: normal;
@@ -251,27 +288,23 @@ h1 {
   margin-top: 1em;
   padding-left: 1.5em !important;
   padding-right: 1.5em !important;
-  border: none; /* Rimuove il bordo predefinito del pulsante */
-  border-radius: 5px; /* Aggiunge bordi arrotondati */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Aggiunge una transizione morbida per entrambi i colori */
+  border: none; 
+  border-radius: 5px; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
-
 .prenotazione-cta-light:hover {
-  background-color: rgba(152, 43, 28, 0.8) !important; /* Colore di sfondo scuro con trasparenza alta durante l'hover */
-  color: #f2e8c6 !important; /* Colore del testo chiaro durante l'hover */
+  background-color: rgba(152, 43, 28, 0.8) !important; 
+  color: #f2e8c6 !important; 
 }
-
 .no-prenotazione {
   color: #6c757d;
 }
-
 .card {
   position: relative;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
 }
-
 .btn-delete {
   position: absolute;
   top: 10px;
@@ -280,20 +313,15 @@ h1 {
   color: #dc3545;
   transition: color 0.3s ease;
 }
-
 .btn-delete:hover {
-  color: #800000; /* Colore del cestino all'hover */
+  color: #800000; 
 }
-
 .pulsanti-conferma {
   display: inline;
 }
-
 @media only screen and (max-width: 528px) {
   .prenotazione-cta-light {
     margin-left: 0 !important;
   }
 }
-
-
 </style>
