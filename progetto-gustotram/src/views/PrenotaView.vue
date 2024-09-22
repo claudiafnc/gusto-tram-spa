@@ -85,9 +85,6 @@
           <div v-else>
             <div v-for="(prenotazione, index) in prenotazioni" :key="index" class="card mb-3">
               <div class="card-body">
-                <button v-if="prenotazione.confermata" @click="eliminaPrenotazione(index)" class="btn btn-link btn-delete">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
 
                 <h5 class="card-title">{{ prenotazione.nome }}</h5>
                 <p class="card-text">Posti: {{ prenotazione.posti }}</p>

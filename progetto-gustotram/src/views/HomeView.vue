@@ -29,7 +29,7 @@
       </div>
       <div class="col-md-6">
         <img
-          src="@/assets/images/tram-disegno.png"
+          v-bind:src="require('@/assets/images/' + copertina)"
           alt="tram"
           class="img-fluid img-tram-home"
         />
@@ -42,26 +42,8 @@
       <div class="col-12 col-md-8">
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="@/assets/images/carosello-1.jpg"
-                class="d-block w-100"
-                alt="prima immagine carosello"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="@/assets/images/carosello-2.jpg"
-                class="d-block w-100"
-                alt="seconda immagine carosello"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="@/assets/images/carosello-3.jpg"
-                class="d-block w-100"
-                alt="terza immagine carosello"
-              />
+            <div v-for="(image, index) in carouselImages" :key="index" class="carousel-item" :class="{ active: index === 0 }">
+              <img v-bind:src="require('@/assets/images/' + image)" class="d-block w-100" v-bind:alt="'immagine carosello ' + (index + 1)" />
             </div>
           </div>
           <button
@@ -90,11 +72,7 @@
     <div class="row justify-content-center">
       <div class="col col-md-4">
         <div class="card" style="margin: 3em auto">
-          <img
-            src="@/assets/images/menu.jpg"
-            class="card-img-top"
-            alt="menu classico"
-          />
+          <img v-bind:src="require('@/assets/images/' + cardImages[0])" class="card-img-top" alt="menu classico" />
           <div class="card-body">
             <h5 class="card-title titolo-card">Men&Ugrave; classico</h5>
             <p class="card-text">
@@ -112,11 +90,7 @@
       </div>
       <div class="col col-md-4">
         <div class="card" style="margin: 3em auto">
-          <img
-            src="@/assets/images/menu-veg.jpg"
-            class="card-img-top"
-            alt="menu veg"
-          />
+        <img v-bind:src="require('@/assets/images/' + cardImages[1])" class="card-img-top" alt="menu classico" />
           <div class="card-body">
             <h5 class="card-title titolo-card">Men&Ugrave; vegetariano</h5>
             <p class="card-text">
@@ -134,6 +108,23 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      // Nome dinamico dell'immagine principale
+      copertina: 'tram-disegno.png',
+      
+      // Array per le immagini del carosello
+      carouselImages: ['carosello-1.jpg', 'carosello-2.jpg', 'carosello-3.jpg'],
+      
+      // Array per le immagini delle card
+      cardImages: ['menu.jpg', 'menu-veg.jpg']
+    };
+  }
+};
+</script>
 
 <style>
 h1 {
