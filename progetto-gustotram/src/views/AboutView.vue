@@ -1,13 +1,14 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col">
         <h1>ABOUT</h1>
         <p class="sezione-testo">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          Benvenuti da Slurp! Da oltre 10 anni, Slurp è il luogo in cui il gusto
+          si incontra con l'innovazione, nel cuore di Torino. Offriamo
+          un'esperienza culinaria unica che unisce tradizione e modernità,
+          grazie a un menù (in versione classica e vegetariana) ricco di piatti
+          gourmet e una selezione di oltre 50 vini al calice.
         </p>
       </div>
     </div>
@@ -24,8 +25,8 @@ h1 {
   width: 50%;
   text-align: center;
 }
-@media only screen and (max-width: 768px){ 
-  .sezione-testo{
+@media only screen and (max-width: 768px) {
+  .sezione-testo {
     width: 80%;
   }
 }

@@ -1,20 +1,32 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
+      <div class="col-12">
+        <img
+          v-bind:src="require('@/assets/images/' + menuCover)"
+          alt="cibo"
+          class="img-fluid w-100 menu-cover"
+        />
+      </div>
       <div class="col">
         <h1>MENÙ</h1>
         <p class="sezione-testo">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          Da Slurp, la cucina è un viaggio tra sapori autentici, tradizione e
+          creatività. Ogni piatto è pensato per offrire un’esperienza unica, con
+          ingredienti freschi e di qualità che esaltano la nostra passione per
+          il buon cibo. Che tu sia un amante della cucina classica o preferisca
+          piatti vegetariani, abbiamo creato due menù dedicati per
+          soddisfare ogni palato.
         </p>
       </div>
     </div>
     <div>
       <ul class="nav">
         <li class="nav-item">
-          <router-link :to="{ name: 'menuClassico' }" class="nav-link" exact-active-class="active"
+          <router-link
+            :to="{ name: 'menuClassico' }"
+            class="nav-link"
+            exact-active-class="active"
             >MEN&Ugrave CLASSICO</router-link
           >
         </li>
@@ -22,7 +34,10 @@
           |
         </li>
         <li class="nav-item">
-          <router-link :to="{ name: 'menuVeg' }" class="nav-link" exact-active-class="active"
+          <router-link
+            :to="{ name: 'menuVeg' }"
+            class="nav-link"
+            exact-active-class="active"
             >MEN&Ugrave VEGETARIANO</router-link
           >
         </li>
@@ -34,9 +49,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      menuCover: "menu-cover.jpg",
+    };
+  },
+};
+</script>
+
 <style scoped>
 h1 {
   text-align: center;
+  margin-top: 1em !important;
 }
 
 .sezione-testo {
@@ -52,7 +78,7 @@ ul {
   list-style-type: none;
   padding: 0;
 }
-.separatore{
+.separatore {
   font-family: "New Amsterdam", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -60,7 +86,8 @@ ul {
   color: rgba(128, 0, 0, 0.5);
   text-decoration: none;
 }
-.nav-item, .nav-link{
+.nav-item,
+.nav-link {
   font-family: "New Amsterdam", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -74,7 +101,7 @@ ul {
 }
 .nav-item li:last-child {
   margin-left: 1em;
-  text-align: left;;
+  text-align: left;
 }
 
 .nav-link:hover,
@@ -82,7 +109,14 @@ ul {
 .nav-link:focus {
   color: #800000;
 }
-@media only screen and (max-width: 992px) { /* larghezza inferiore o uguale a 992 */
+
+.menu-cover{
+  height: 300px;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 992px) {
+  /* larghezza inferiore o uguale a 992 */
   ul {
     display: block;
     text-align: center;
@@ -93,8 +127,8 @@ ul {
   }
 }
 
-@media only screen and (max-width: 768px){ 
-  .sezione-testo{
+@media only screen and (max-width: 768px) {
+  .sezione-testo {
     width: 80%;
   }
 }

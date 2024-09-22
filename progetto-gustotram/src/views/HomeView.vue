@@ -70,6 +70,7 @@
   </div>
   <div class="container-fluid">
     <div class="row justify-content-center">
+      <h3>CONSULTA I MEN&Ugrave;</h3>
       <div class="col col-md-4">
         <div class="card" style="margin: 3em auto">
           <img v-bind:src="require('@/assets/images/' + cardImages[0])" class="card-img-top" alt="menu classico" />
