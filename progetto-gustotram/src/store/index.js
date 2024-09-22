@@ -1,8 +1,8 @@
-import { createStore } from 'vuex';
+import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    prenotazioni: []  // Qui viene memorizzata la lista delle prenotazioni
+    prenotazioni: [], // Qui viene memorizzata la lista delle prenotazioni
   },
   mutations: {
     ADD_PRENOTAZIONE(state, prenotazione) {
@@ -20,21 +20,20 @@ export default createStore({
       if (state.prenotazioni[index]) {
         state.prenotazioni.splice(index, 1);
       }
-    }
+    },
   },
   actions: {
     addPrenotazione({ commit }, prenotazione) {
-      commit('ADD_PRENOTAZIONE', prenotazione);  // Chiama la mutazione ADD_PRENOTAZIONE
+      commit("ADD_PRENOTAZIONE", prenotazione); // Chiama la mutazione ADD_PRENOTAZIONE
     },
     confirmPrenotazione({ commit }, index) {
-      commit('CONFIRM_PRENOTAZIONE', index);  // Chiama la mutazione CONFIRM_PRENOTAZIONE
+      commit("CONFIRM_PRENOTAZIONE", index); // Chiama la mutazione CONFIRM_PRENOTAZIONE
     },
     deletePrenotazione({ commit }, index) {
-      commit('DELETE_PRENOTAZIONE', index);  // Chiama la mutazione DELETE_PRENOTAZIONE
-    }
+      commit("DELETE_PRENOTAZIONE", index); // Chiama la mutazione DELETE_PRENOTAZIONE
+    },
   },
   getters: {
-    prenotazioni: (state) => state.prenotazioni  // Getter per restituire la lista delle prenotazioni
-  }
+    prenotazioni: (state) => state.prenotazioni, // Getter per restituire la lista delle prenotazioni
+  },
 });
-

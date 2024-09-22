@@ -97,8 +97,8 @@
 }
 
 .cta-prenota-navbar {
-  background-color: #f2e8c6 !important; 
-  color: #800000 !important; 
+  background-color: #f2e8c6 !important;
+  color: #800000 !important;
   font-family: "New Amsterdam", sans-serif !important;
   font-weight: 400;
   font-style: normal;
@@ -108,8 +108,6 @@
   border: none;
   border-radius: 5px;
 }
-
-
 
 .navbar-nav {
   width: 100%;

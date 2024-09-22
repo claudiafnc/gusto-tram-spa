@@ -14,11 +14,11 @@
           <h2>L'EXPERIENCE</h2>
           <p class="testo-base">
             Salta a bordo di Gusto Tram e lasciati trasportare in un viaggio
-            gastronomico senza eguali. Scopri l’emozione di cenare in movimento,
+            gastronomico senza eguali. Scopri l'emozione di cenare in movimento,
             mentre il tram attraversa le strade torinesi, offrendo una vista in
-            continua evoluzione della città. Vivi la gioia di un’esperienza
+            continua evoluzione della città. Vivi la gioia di un'esperienza
             culinaria interattiva, dove ogni dettaglio, dalla selezione dei
-            piatti al servizio elegante, è pensato per sorprendere e deliziare.
+            piatti al servizio elegante, è pensato per sorprendere e deliziare.
           </p>
           <router-link :to="{ name: 'prenota' }"
             ><button type="button" class="btn cta-prenota">
@@ -42,8 +42,17 @@
       <div class="col-12 col-md-8">
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
           <div class="carousel-inner">
-            <div v-for="(image, index) in carouselImages" :key="index" class="carousel-item" :class="{ active: index === 0 }">
-              <img v-bind:src="require('@/assets/images/' + image)" class="d-block w-100" v-bind:alt="'immagine carosello ' + (index + 1)" />
+            <div
+              v-for="(image, index) in carouselImages"
+              :key="index"
+              class="carousel-item"
+              :class="{ active: index === 0 }"
+            >
+              <img
+                v-bind:src="require('@/assets/images/' + image)"
+                class="d-block w-100"
+                v-bind:alt="'immagine carosello ' + (index + 1)"
+              />
             </div>
           </div>
           <button
@@ -73,7 +82,11 @@
       <h3>CONSULTA I MEN&Ugrave;</h3>
       <div class="col col-md-4">
         <div class="card" style="margin: 3em auto">
-          <img v-bind:src="require('@/assets/images/' + cardImages[0])" class="card-img-top" alt="menu classico" />
+          <img
+            v-bind:src="require('@/assets/images/' + cardImages[0])"
+            class="card-img-top"
+            alt="menu classico"
+          />
           <div class="card-body">
             <h5 class="card-title titolo-card">Men&Ugrave; classico</h5>
             <p class="card-text">
@@ -91,13 +104,17 @@
       </div>
       <div class="col col-md-4">
         <div class="card" style="margin: 3em auto">
-        <img v-bind:src="require('@/assets/images/' + cardImages[1])" class="card-img-top" alt="menu classico" />
+          <img
+            v-bind:src="require('@/assets/images/' + cardImages[1])"
+            class="card-img-top"
+            alt="menu classico"
+          />
           <div class="card-body">
             <h5 class="card-title titolo-card">Men&Ugrave; vegetariano</h5>
             <p class="card-text">
               Scopri il nostro Menù Vegano, una selezione creativa e vibrante di
               piatti senza ingredienti animali, che esaltano i sapori naturali
-              del Piemonte. Un'opzione gustosa e sostenibile per tutti i palati.
+              del Piemonte. Un'opzione gustosa e sostenibile per tutti i palati.
             </p>
             <router-link :to="{ name: 'menuVeg' }" class="btn cta-prenota"
               >SCOPRI IL MEN&Ugrave; VEGETARIANO</router-link
@@ -115,15 +132,15 @@ export default {
   data() {
     return {
       // Nome dinamico dell'immagine principale
-      copertina: 'tram-disegno.png',
-      
+      copertina: "tram-disegno.png",
+
       // Array per le immagini del carosello
-      carouselImages: ['carosello-1.jpg', 'carosello-2.jpg', 'carosello-3.jpg'],
-      
+      carouselImages: ["carosello-1.jpg", "carosello-2.jpg", "carosello-3.jpg"],
+
       // Array per le immagini delle card
-      cardImages: ['menu.jpg', 'menu-veg.jpg']
+      cardImages: ["menu.jpg", "menu-veg.jpg"],
     };
-  }
+  },
 };
 </script>
 
@@ -169,12 +186,17 @@ h1 {
   font-size: 24px !important;
   margin-top: 2em;
   padding-left: 1.5em !important;
-  padding-right:1.5em !important;
-  transition: background-color 0.3s ease, color 0.3s ease !important; 
+  padding-right: 1.5em !important;
+  transition: background-color 0.3s ease, color 0.3s ease !important;
 }
 
 .cta-prenota:hover {
-  background-color: rgba(82, 13, 11, 0.9) !important; /* Colore di sfondo più scuro con trasparenza alta */
+  background-color: rgba(
+    82,
+    13,
+    11,
+    0.9
+  ) !important; /* Colore di sfondo più scuro con trasparenza alta */
 }
 
 h2 {

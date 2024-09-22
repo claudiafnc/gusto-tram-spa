@@ -12,11 +12,11 @@
         <h1>MENÙ</h1>
         <p class="sezione-testo">
           Da Slurp, la cucina è un viaggio tra sapori autentici, tradizione e
-          creatività. Ogni piatto è pensato per offrire un’esperienza unica, con
+          creatività. Ogni piatto è pensato per offrire un'esperienza unica, con
           ingredienti freschi e di qualità che esaltano la nostra passione per
           il buon cibo. Che tu sia un amante della cucina classica o preferisca
-          piatti vegetariani, abbiamo creato due menù dedicati per
-          soddisfare ogni palato.
+          piatti vegetariani, abbiamo creato due menù dedicati per soddisfare
+          ogni palato.
         </p>
       </div>
     </div>
@@ -27,7 +27,7 @@
             :to="{ name: 'menuClassico' }"
             class="nav-link"
             exact-active-class="active"
-            >MEN&Ugrave CLASSICO</router-link
+            >MEN&Ugrave; CLASSICO</router-link
           >
         </li>
         <li class="separatore" style="margin-left: 1em; margin-right: 1em">
@@ -38,7 +38,7 @@
             :to="{ name: 'menuVeg' }"
             class="nav-link"
             exact-active-class="active"
-            >MEN&Ugrave VEGETARIANO</router-link
+            >MEN&Ugrave; VEGETARIANO</router-link
           >
         </li>
       </ul>
@@ -110,7 +110,7 @@ ul {
   color: #800000;
 }
 
-.menu-cover{
+.menu-cover {
   height: 300px;
   object-fit: cover;
 }

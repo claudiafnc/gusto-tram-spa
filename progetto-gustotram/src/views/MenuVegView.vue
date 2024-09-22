@@ -115,7 +115,4 @@
   font-size: 16px;
   color: #1a1a1a !important;
 }
-
-
-
 </style>
