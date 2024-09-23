@@ -6,7 +6,7 @@ export default createStore({
   },
   mutations: {
     ADD_PRENOTAZIONE(state, prenotazione) {
-      // Aggiunge una nuova prenotazione alla lista delle prenotazioni nello stato
+      // Aggiunge una nuova prenotazione della lista delle prenotazioni nello stato
       state.prenotazioni.push(prenotazione);
     },
     CONFIRM_PRENOTAZIONE(state, index) {

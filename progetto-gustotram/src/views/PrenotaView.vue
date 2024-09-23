@@ -181,7 +181,7 @@
           </div>
           <div v-else>
             <div
-              v-for="(prenotazione, index) in prenotazioni"
+              v-for="(prenotazione, index) in prenotazioni.slice().reverse()"
               :key="index"
               class="card mb-3"
             >
@@ -205,14 +205,18 @@
                 <div class="d-flex pulsanti-conferma">
                   <button
                     v-if="!prenotazione.confermata"
-                    @click="confermaPrenotazione(index)"
+                    @click="
+                      confermaPrenotazione(prenotazioni.length - 1 - index) // index nel v-for è invertito, occorre invertirlo di nuovo, per farlo lo si sottrae dall'indice massimo (length-1)
+                    "
                     class="btn me-2 prenotazione-cta"
                   >
                     Conferma
                   </button>
                   <button
                     v-if="!prenotazione.confermata"
-                    @click="eliminaPrenotazione(index)"
+                    @click="
+                      eliminaPrenotazione(prenotazioni.length - 1 - index) // come sopra
+                    "
                     class="btn prenotazione-cta-light"
                   >
                     Elimina
@@ -229,7 +233,6 @@
 
 <script>
 import axios from "axios"; // Importa axios
-import { mapState, mapActions } from "vuex";
 
 export default {
   data() {
@@ -245,29 +248,20 @@ export default {
       prenotazioni: [],
     };
   },
-  computed: {
-    ...mapState(["prenotazioni"]),
-  },
+
   created() {
     // Effettua la richiesta GET al json-server locale
     axios
       .get("http://localhost:3000/prenotazioni")
       .then((response) => {
         this.prenotazioni = response.data;
-        response.data.forEach((prenotazione) => {
-          this.addPrenotazioneToStore(prenotazione);
-        });
       })
       .catch((error) => {
         console.error("Errore nel caricamento delle prenotazioni:", error);
       });
   },
   methods: {
-    ...mapActions([
-      "addPrenotazione",
-      "confirmPrenotazione",
-      "deletePrenotazione",
-    ]),
+    // crea oggetto prenotazione, aggiunge alla lista locale e invia al server
     creaPrenotazione() {
       const nuovaPrenotazione = {
         nome: this.nome,
@@ -280,7 +274,6 @@ export default {
         note: this.note,
         confermata: false,
       };
-      this.addPrenotazione(nuovaPrenotazione);
 
       // Invia la nuova prenotazione al server
       axios
@@ -296,7 +289,8 @@ export default {
           this.telefono = "";
           this.note = "";
 
-          this.prenotazioni.push(response.data); // Aggiungi la nuova prenotazione alla lista locale
+          // Aggiungi la nuova prenotazione alla lista locale
+          this.prenotazioni.push(response.data);
 
           // Scrolla verso la sezione delle prenotazioni
           this.$nextTick(() => {
@@ -311,7 +305,6 @@ export default {
         });
     },
     confermaPrenotazione(index) {
-      this.confirmPrenotazione(index);
       const prenotazione = this.prenotazioni[index];
 
       // Aggiorna il server con la conferma
@@ -319,12 +312,14 @@ export default {
         .patch(`http://localhost:3000/prenotazioni/${prenotazione.id}`, {
           confermata: true,
         })
+        .then(() => {
+          this.prenotazioni[index].confermata = true;
+        })
         .catch((error) => {
           console.error("Errore nella conferma della prenotazione:", error);
         });
     },
     eliminaPrenotazione(index) {
-      this.deletePrenotazione(index);
       const prenotazione = this.prenotazioni[index];
 
       // Elimina dal server
@@ -354,19 +349,16 @@ export default {
       if (this.ospiti > 1) this.ospiti--;
     },
     incrementaMenuVeg() {
-      this.menuVeg++;
+      if (this.menuVeg + this.menuClassico < this.ospiti) this.menuVeg++;
     },
     decrementaMenuVeg() {
       if (this.menuVeg > 0) this.menuVeg--;
     },
     incrementaMenuClassico() {
-      this.menuClassico++;
+      if (this.menuVeg + this.menuClassico < this.ospiti) this.menuClassico++;
     },
     decrementaMenuClassico() {
       if (this.menuClassico > 0) this.menuClassico--;
-    },
-    addPrenotazioneToStore(prenotazione) {
-      this.$store.dispatch("addPrenotazione", prenotazione);
     },
   },
 };
