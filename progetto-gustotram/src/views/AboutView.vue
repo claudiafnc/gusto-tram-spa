@@ -22,18 +22,17 @@
               referrerpolicy="no-referrer-when-downgrade"
             >
             </iframe>
-            <p>Carlina Nord Ristocolor, 1557</p>
+            <p class="testo-contatti">Carlina Nord Ristocolor, 1557</p>
           </div>
-          <div class="col-md-4 col-sm-12">
+          <div class="col-md-4 col-sm-12 testo-contatti">
             <h2>CONTATTI</h2>
             <p>+39 011 4548554</p>
             <p>ceneinmovimento@slurptorino.com</p>
             <p>Via Massena 26, 10128, Torino (TO)</p>
           </div>
         </div>
-        <div class="row justify-content-center">
-          <h2>Dicono di noi</h2>
-          <div class="col-4">
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-4 col-sm-12 mt-3">
             <h3>Lascia una recensione</h3>
             <form @submit.prevent="creaRecensione" class="testo-form">
               <div class="mb-3">
@@ -61,8 +60,8 @@
               <button type="submit" class="btn invia-cta">Invia</button>
             </form>
           </div>
-          <div class="col-4 testo-form">
-            <h3>Recensioni</h3>
+          <div class="col-md-4 col-sm-12 mt-3 testo-form">
+            <h3>Dicono di noi</h3>
             <div v-if="reviews.length > 0">
               <div
                 v-for="(review, index) in reviews"
@@ -122,6 +121,7 @@ h1 {
 
 h2 {
   text-align: center;
+  margin-bottom: 1em;
 }
 
 .sezione-testo {
@@ -132,9 +132,11 @@ h2 {
 
 h3 {
   margin-top: 1em !important;
+  color: #800000 !important;
 }
 
-.testo-form {
+.testo-form,
+.testo-contatti {
   font-family: "Montserrat", sans-serif;
   font-weight: 450;
   font-style: normal;
