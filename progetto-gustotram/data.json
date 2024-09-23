@@ -1,3 +1,40 @@
 {
-  "prenotazioni": []
+  "prenotazioni": [
+    {
+      "id": "a60b",
+      "nome": "CLAUDIA",
+      "posti": 2,
+      "menuVeg": 2,
+      "menuClassico": 0,
+      "data": "2024-09-18",
+      "slotOrario": "13:00",
+      "telefono": "4378438734784387",
+      "note": "",
+      "confermata": true
+    },
+    {
+      "id": "5d99",
+      "nome": "treret",
+      "posti": 1,
+      "menuVeg": 0,
+      "menuClassico": 0,
+      "data": "2024-09-28",
+      "slotOrario": "13:00",
+      "telefono": "4534543",
+      "note": "",
+      "confermata": false
+    },
+    {
+      "id": "b3b9",
+      "nome": "sdsdsdd",
+      "posti": 1,
+      "menuVeg": 0,
+      "menuClassico": 0,
+      "data": "2024-09-14",
+      "slotOrario": "13:00",
+      "telefono": "4378438734784387",
+      "note": "",
+      "confermata": false
+    }
+  ]
 }
