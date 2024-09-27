@@ -8,18 +8,16 @@
           class="img-fluid w-100 menu-cover"
         />
       </div>
-      <div class="row">
-        <div class="col">
-          <h1>MENÙ</h1>
-          <p class="sezione-testo">
-            Da Slurp, la cucina è un viaggio tra sapori autentici, tradizione e
-            creatività. Ogni piatto è pensato per offrire un'esperienza unica,
-            con ingredienti freschi e di qualità che esaltano la nostra passione
-            per il buon cibo. Che tu sia un amante della cucina classica o
-            preferisca piatti vegetariani, abbiamo creato due menù dedicati per
-            soddisfare ogni palato.
-          </p>
-        </div>
+      <div class="col">
+        <h1>MENÙ</h1>
+        <p class="sezione-testo">
+          Da Slurp, la cucina è un viaggio tra sapori autentici, tradizione e
+          creatività. Ogni piatto è pensato per offrire un'esperienza unica, con
+          ingredienti freschi e di qualità che esaltano la nostra passione per
+          il buon cibo. Che tu sia un amante della cucina classica o preferisca
+          piatti vegetariani, abbiamo creato due menù dedicati per soddisfare
+          ogni palato.
+        </p>
       </div>
     </div>
     <div>
