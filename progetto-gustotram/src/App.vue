@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col">
         <router-view />
-        <!-- Qui verrà visualizzato il contenuto delle pagine -->
+        <!-- Contenuto delle singole view -->
       </div>
     </div>
     <div class="container-fluid">

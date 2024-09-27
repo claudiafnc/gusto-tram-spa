@@ -37,10 +37,11 @@
           <li class="nav-item mx-auto">
             <router-link :to="{ name: 'home' }" class="navbar-brand">
               <img
-                src="@/assets/images/logo-slurp.png"
+                v-bind:src="require('@/assets/images/' + logoNavbar)"
                 alt="logo"
                 width="110"
                 height="95"
+                class="logo"
               />
             </router-link>
           </li>
@@ -123,12 +124,18 @@
 }
 
 @media only screen and (max-width: 992px) {
-  img {
+  img.logo {
     display: none;
   }
 }
 </style>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      logoNavbar: "logo-slurp.png",
+    };
+  },
+};
 </script>

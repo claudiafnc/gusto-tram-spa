@@ -1,10 +1,9 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col">
+    <div class="row justify-content-center">
+      <div class="col-8">
         <h1>PRENOTA</h1>
         <form @submit.prevent="creaPrenotazione">
-          <!-- Nome e Cognome -->
           <div class="mb-3">
             <label for="nome" class="form-label">Nome e Cognome</label>
             <input
@@ -16,7 +15,6 @@
             />
           </div>
 
-          <!-- Numero di Ospiti -->
           <div class="mb-3">
             <label for="ospiti" class="form-label">Numero di Ospiti</label>
             <div class="d-flex align-items-center">
@@ -46,9 +44,8 @@
             </div>
           </div>
 
-          <!-- Menu Veg -->
           <div class="mb-3">
-            <label for="menuVeg" class="form-label">Menu Veg</label>
+            <label for="menuVeg" class="form-label">Menu Vegetariano</label>
             <div class="d-flex align-items-center">
               <input
                 type="number"
@@ -76,7 +73,6 @@
             </div>
           </div>
 
-          <!-- Menu Classico -->
           <div class="mb-3">
             <label for="menuClassico" class="form-label">Menu Classico</label>
             <div class="d-flex align-items-center">
@@ -106,7 +102,6 @@
             </div>
           </div>
 
-          <!-- Data e Slot Orario -->
           <div class="mb-3 d-flex">
             <div class="me-3">
               <label for="data" class="form-label">Data</label>
@@ -134,7 +129,6 @@
             </div>
           </div>
 
-          <!-- Numero di Telefono -->
           <div class="mb-3">
             <label for="telefono" class="form-label">Numero di Telefono</label>
             <input
@@ -148,7 +142,6 @@
             />
           </div>
 
-          <!-- Note Aggiuntive -->
           <div class="mb-3">
             <label for="note" class="form-label">Note Aggiuntive</label>
             <textarea
@@ -159,7 +152,6 @@
             ></textarea>
           </div>
 
-          <!-- Pulsanti Azione -->
           <div class="mb-3">
             <button type="submit" class="btn prenotazione-cta">
               Crea Prenotazione
@@ -175,7 +167,7 @@
         </form>
 
         <div class="mt-4" id="prenotazioni-section">
-          <h2>Le tue prenotazioni</h2>
+          <h2>Riepilogo delle tue prenotazioni</h2>
           <div v-if="prenotazioni.length === 0">
             <p class="no-prenotazione">-- Nessuna prenotazione --</p>
           </div>
@@ -188,7 +180,9 @@
               <div class="card-body">
                 <h5 class="card-title">{{ prenotazione.nome }}</h5>
                 <p class="card-text">Posti: {{ prenotazione.posti }}</p>
-                <p class="card-text">Menu Veg: {{ prenotazione.menuVeg }}</p>
+                <p class="card-text">
+                  Menu Vegetariano: {{ prenotazione.menuVeg }}
+                </p>
                 <p class="card-text">
                   Menu Classico: {{ prenotazione.menuClassico }}
                 </p>
@@ -206,7 +200,7 @@
                   <button
                     v-if="!prenotazione.confermata"
                     @click="
-                      confermaPrenotazione(prenotazioni.length - 1 - index) // index nel v-for è invertito, occorre invertirlo di nuovo, per farlo lo si sottrae dall'indice massimo (length-1)
+                      confermaPrenotazione(prenotazioni.length - 1 - index) // nel v-for index è invertito, occorre invertirlo nuovamente, e per farlo lo si sottrae dall'indice massimo (length-1)
                     "
                     class="btn me-2 prenotazione-cta"
                   >

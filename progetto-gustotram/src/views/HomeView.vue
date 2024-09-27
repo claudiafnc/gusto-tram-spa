@@ -230,4 +230,17 @@ h3 {
   font-size: 28px !important;
   color: #982b1c !important;
 }
+@media only screen and (max-width: 992px) {
+  h3 {
+    margin-top: 2em !important;
+  }
+  .carousel {
+    margin-bottom: 1em;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .img-tram-home {
+    display: none;
+  }
+}
 </style>

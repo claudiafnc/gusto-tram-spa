@@ -76,7 +76,7 @@
                 class="review-item"
               >
                 <p>
-                  <strong>{{ review.nome }}</strong> dice:
+                  <span class="testo-via">{{ review.nome }}</span> dice:
                 </p>
                 <p>{{ review.testo }}</p>
               </div>
@@ -137,6 +137,7 @@ h2 {
 .about-cover {
   height: 300px;
   object-fit: cover;
+  object-position: 50% 88%;
 }
 .sezione-testo {
   margin: 0 auto;
