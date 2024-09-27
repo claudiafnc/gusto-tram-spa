@@ -1,6 +1,13 @@
 <template>
   <div class="container-fluid">
     <div class="row">
+      <div class="col-12">
+        <img
+          v-bind:src="require('@/assets/images/' + aboutCover)"
+          alt="tram"
+          class="img-fluid w-100 about-cover"
+        />
+      </div>
       <div class="col">
         <h1>ABOUT</h1>
         <p class="sezione-testo">
@@ -16,18 +23,18 @@
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5635.891851437801!2d7.689!3d45.066608!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d64fefa6645%3A0xb30be4bce64f7480!2sCarlina%20Nord%20Ristocolor!5e0!3m2!1sit!2sus!4v1727123352617!5m2!1sit!2sus"
               width="100%"
-              style="border: 0"
               allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
             >
             </iframe>
-            <p class="testo-contatti">Carlina Nord Ristocolor, 1557</p>
+            <p class="testo-via">Carlina Nord Ristocolor, 1557</p>
           </div>
           <div class="col-md-4 col-sm-12 testo-contatti">
             <h2>CONTATTI</h2>
-            <p>+39 011 4548554</p>
-            <p>ceneinmovimento@slurptorino.com</p>
+            <p><span class="testo-via">tel :</span> +39 011 4548554</p>
+            <p>
+              <span class="testo-via">e-mail :</span>
+              ceneinmovimento@slurptorino.com
+            </p>
             <p>Via Massena 26, 10128, Torino (TO)</p>
           </div>
         </div>
@@ -36,7 +43,7 @@
             <h3>Lascia una recensione</h3>
             <form @submit.prevent="creaRecensione" class="testo-form">
               <div class="mb-3">
-                <label for="nomeRecensione" class="form-label">Nome</label>
+                <label for="nomeRecensione" class="form-label">Nome:</label>
                 <input
                   type="text"
                   v-model="nomeRecensione"
@@ -74,7 +81,9 @@
                 <p>{{ review.testo }}</p>
               </div>
             </div>
-            <p v-else>Nessuna recensione inserita.</p>
+            <p v-else style="text-align: center">
+              Nessuna recensione inserita.
+            </p>
           </div>
         </div>
       </div>
@@ -88,6 +97,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
+      aboutCover: "about.jpg",
       nomeRecensione: "",
       recensione: "",
     };
@@ -117,13 +127,17 @@ export default {
 <style scoped>
 h1 {
   text-align: center;
+  margin-top: 1em !important;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 1em;
 }
-
+.about-cover {
+  height: 300px;
+  object-fit: cover;
+}
 .sezione-testo {
   margin: 0 auto;
   width: 50%;
@@ -142,6 +156,16 @@ h3 {
   font-style: normal;
   font-size: 18px;
   color: #1a1a1a !important;
+}
+
+.testo-via {
+  font-family: "New Amsterdam", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px !important;
+  text-align: center;
+  margin-top: 0.5em;
+  color: #982b1c;
 }
 
 .invia-cta {
