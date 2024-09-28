@@ -92,8 +92,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-
 export default {
   data() {
     return {
@@ -103,13 +101,19 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["allReviews"]), // Collega il getter per ottenere le recensioni
+    // Accede al getter 'allReviews' direttamente
+    allReviews() {
+      return this.$store.getters.allReviews;
+    },
     reviews() {
-      return this.allReviews; // Restituisce tutte le recensioni dallo stato
+      return this.allReviews;
     },
   },
   methods: {
-    ...mapActions(["addReview"]), // Collega l'azione per aggiungere una recensione
+    // Accede all'azione 'addReview' direttamente
+    addReview(review) {
+      this.$store.dispatch("addReview", review);
+    },
     creaRecensione() {
       // Crea una nuova recensione
       const nuovaRecensione = {
