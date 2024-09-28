@@ -20,7 +20,7 @@
         </p>
       </div>
     </div>
-    <div>
+    <div class="col">
       <ul class="nav">
         <li class="nav-item">
           <router-link
@@ -44,7 +44,23 @@
       </ul>
     </div>
     <div class="view-menu">
+      <hr
+        style="margin: 0 auto; translate: 0 2em 0; width: 50%; color: #800000"
+      />
       <router-view></router-view>
+      <hr
+        style="margin: 0 auto; translate: 0 1em 0; width: 50%; color: #800000"
+      />
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col d-flex justify-content-center">
+        <router-link :to="{ name: 'prenota' }"
+          ><button type="button" class="btn cta-prenota">
+            PRENOTA
+          </button></router-link
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -113,6 +129,11 @@ ul {
 .menu-cover {
   height: 300px;
   object-fit: cover;
+}
+
+.cta-prenota {
+  margin: 0 !important;
+  margin-top: 3em !important;
 }
 
 @media only screen and (max-width: 992px) {
