@@ -58,6 +58,9 @@
           >
             <span class="portata">Lasagna al forno</span>
             <p class="descrizione">con ragù di verdure</p>
+            <br />
+            <span class="portata">Polenta croccante</span>
+            <p class="descrizione">con salsa ai funghi porcini</p>
           </div>
           <div
             class="tab-pane fade"
@@ -65,8 +68,14 @@
             role="tabpanel"
             aria-labelledby="list-messages-list"
           >
-            <span class="portata">Bonet</span>
+            <span class="portata">Bonet VEG</span>
             <p class="descrizione">con amaretti</p>
+            <br />
+            <span class="portata">Albicocche ripiene</span>
+            <p class="descrizione">con crema pasticcera veg</p>
+            <br />
+            <span class="portata">Baci di dama</span>
+            <p class="descrizione">con pallina di gelato alla soia</p>
           </div>
         </div>
       </div>

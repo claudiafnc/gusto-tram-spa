@@ -60,6 +60,9 @@
           >
             <span class="portata">Lasagna al forno</span>
             <p class="descrizione">con ragù 100% di Fassona piemontese</p>
+            <br />
+            <span class="portata">Paccheri</span>
+            <p class="descrizione">con crema di ceci e nocciola IGP</p>
           </div>
           <div
             class="tab-pane fade"
@@ -69,6 +72,12 @@
           >
             <span class="portata">Bonet</span>
             <p class="descrizione">con amaretti</p>
+            <br />
+            <span class="portata">Panna cotta</span>
+            <p class="descrizione">servita con salsina al Barolo e spezie</p>
+            <br />
+            <span class="portata">Torta di ricotta</span>
+            <p class="descrizione">con castagne</p>
           </div>
         </div>
       </div>
