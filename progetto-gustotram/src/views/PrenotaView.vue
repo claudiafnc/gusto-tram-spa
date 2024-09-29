@@ -226,7 +226,7 @@
 </template>
 
 <script>
-import axios from "axios"; // Importa axios
+import axios from "axios"; // importa axios
 
 export default {
   data() {
@@ -244,7 +244,7 @@ export default {
   },
 
   created() {
-    // Effettua la richiesta GET al json-server locale
+    // effettua la richiesta GET al json-server locale
     axios
       .get("http://localhost:3000/prenotazioni")
       .then((response) => {
@@ -255,7 +255,7 @@ export default {
       });
   },
   methods: {
-    // crea oggetto prenotazione, aggiunge alla lista locale e invia al server
+    // crea oggetto prenotazione
     creaPrenotazione() {
       const nuovaPrenotazione = {
         nome: this.nome,
@@ -269,11 +269,11 @@ export default {
         confermata: false,
       };
 
-      // Invia la nuova prenotazione al server
+      // invia la nuova prenotazione al server
       axios
         .post("http://localhost:3000/prenotazioni", nuovaPrenotazione)
         .then((response) => {
-          // Resetta i campi del form
+          // resetta i campi del form
           this.nome = "";
           this.ospiti = 1;
           this.menuVeg = 0;
@@ -283,10 +283,10 @@ export default {
           this.telefono = "";
           this.note = "";
 
-          // Aggiungi la nuova prenotazione alla lista locale
+          // aggiunge la nuova prenotazione alla lista locale
           this.prenotazioni.push(response.data);
 
-          // Scrolla verso la sezione delle prenotazioni
+          // scrolla all'inizio del div con id "prenotazioni-section" (il div delle prenotazioni)
           this.$nextTick(() => {
             const section = document.getElementById("prenotazioni-section");
             if (section) {
@@ -301,7 +301,7 @@ export default {
     confermaPrenotazione(index) {
       const prenotazione = this.prenotazioni[index];
 
-      // Aggiorna il server con la conferma
+      // aggiorna il server con la conferma della prenotazione
       axios
         .patch(`http://localhost:3000/prenotazioni/${prenotazione.id}`, {
           confermata: true,
@@ -316,7 +316,7 @@ export default {
     eliminaPrenotazione(index) {
       const prenotazione = this.prenotazioni[index];
 
-      // Elimina dal server
+      // elimina dal server la prenotazione
       axios
         .delete(`http://localhost:3000/prenotazioni/${prenotazione.id}`)
         .then(() => {

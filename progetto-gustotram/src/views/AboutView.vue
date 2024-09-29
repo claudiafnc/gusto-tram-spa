@@ -101,7 +101,7 @@ export default {
     };
   },
   computed: {
-    // Accede al getter 'allReviews' direttamente
+    // accede al getter 'allReviews'
     allReviews() {
       return this.$store.getters.allReviews;
     },
@@ -110,19 +110,19 @@ export default {
     },
   },
   methods: {
-    // Accede all'azione 'addReview' direttamente
+    // accede all'azione 'addReview'
     addReview(review) {
       this.$store.dispatch("addReview", review);
     },
     creaRecensione() {
-      // Crea una nuova recensione
+      // crea nuova recensione
       const nuovaRecensione = {
         nome: this.nomeRecensione,
         testo: this.recensione,
       };
-      this.addReview(nuovaRecensione); // Aggiunge la recensione allo stato
-      this.nomeRecensione = ""; // Resetta il campo nome
-      this.recensione = ""; // Resetta il campo recensione
+      this.addReview(nuovaRecensione); // aggiunge la recensione allo stato e resetta i campi
+      this.nomeRecensione = "";
+      this.recensione = "";
     },
   },
 };

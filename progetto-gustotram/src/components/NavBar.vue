@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <!-- Toggle button per il menu in modalità mobile -->
+      <!-- pulsante hamburger menu -->
       <button
         class="navbar-toggler"
         type="button"
@@ -21,7 +21,6 @@
         <ul
           class="navbar-nav d-flex w-100 justify-content-between align-items-center"
         >
-          <!-- Menu sinistro -->
           <li class="nav-item">
             <router-link :to="{ name: 'home' }" class="nav-link"
               >HOME</router-link
@@ -33,7 +32,6 @@
             >
           </li>
 
-          <!-- Logo centrale -->
           <li class="nav-item mx-auto">
             <router-link :to="{ name: 'home' }" class="navbar-brand">
               <img
@@ -46,7 +44,6 @@
             </router-link>
           </li>
 
-          <!-- Menu destro -->
           <li class="nav-item">
             <router-link :to="{ name: 'about' }" class="nav-link"
               >ABOUT</router-link
@@ -115,7 +112,7 @@
 }
 
 .navbar-nav li {
-  flex: 1; /* Ogni elemento del menu occupa lo stesso spazio */
+  flex: 1; /* ogni elemento del menu occupa lo stesso spazio */
   text-align: center;
 }
 

@@ -98,7 +98,6 @@
             <router-link :to="{ name: 'menuClassico' }" class="btn cta-prenota"
               >SCOPRI IL MEN&Ugrave; CLASSICO</router-link
             >
-            <!--mettere il link-->
           </div>
         </div>
       </div>
@@ -119,7 +118,6 @@
             <router-link :to="{ name: 'menuVeg' }" class="btn cta-prenota"
               >SCOPRI IL MEN&Ugrave; VEGETARIANO</router-link
             >
-            <!--mettere il link-->
           </div>
         </div>
       </div>
@@ -131,13 +129,12 @@
 export default {
   data() {
     return {
-      // Nome dinamico dell'immagine principale
       copertina: "tram-disegno.png",
 
-      // Array per le immagini del carosello
+      // array immagini carosello
       carouselImages: ["carosello-1.jpg", "carosello-2.jpg", "carosello-3.jpg"],
 
-      // Array per le immagini delle card
+      // array immagini card
       cardImages: ["menu.jpg", "menu-veg.jpg"],
     };
   },
@@ -196,7 +193,7 @@ h1 {
     13,
     11,
     0.9
-  ) !important; /* Colore di sfondo più scuro con trasparenza alta */
+  ) !important; /* Colore più scuro in hover */
 }
 
 h2 {
